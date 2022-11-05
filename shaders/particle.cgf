@@ -1,0 +1,18 @@
+﻿/* SCE CONFIDENTIAL
+PlayStation(R)Vita Programmer Tool Runtime Library Release 01.500.151 <-- Not exactly
+* Copyright (C) 2009 Sony Computer Entertainment Inc. 
+* All Rights Reserved.
+*/
+
+half4 main
+(
+	half2 vTexcoord : TEXCOORD0,
+	half4 vColor : TEXCOORD1,
+	uniform sampler2D partTexture : TEXUNIT0
+)
+{
+    // sample particle texture and apply to the color
+    half4 color = (tex2D(partTexture, vTexcoord.xy) * vColor);
+    return color;
+}
+

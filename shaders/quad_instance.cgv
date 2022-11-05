@@ -1,0 +1,25 @@
+﻿void main(
+	float2 aPosition 	: POSITION,
+	float4 aDestRect	: TEXCOORD0,
+	float4 aSrcRect		: TEXCOORD1,
+	float4 aColor		: COLOR0,
+
+	out float4 oPosition : POSITION,
+	out float2 oTexcoord : TEXCOORD0,
+	out float4 oColor : COLOR0,
+
+	uniform float2	textureSize)
+{
+	const float2 d2 = float2(960, 544) / 2.0f;
+	float2 coordInDisplay = aDestRect.xy + aDestRect.zw * aPosition;
+	
+	oPosition.x = (coordInDisplay.x - d2.x) / d2.x;
+	oPosition.y = (d2.y - coordInDisplay.y) / d2.y;
+	oPosition.z = 0.0f;
+	oPosition.w = 1.0f;
+	
+	float2 coordInTex = aSrcRect.xy + aSrcRect.zw * aPosition;
+	oTexcoord = coordInTex / textureSize;
+
+	oColor = aColor;
+}

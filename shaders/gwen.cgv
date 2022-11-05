@@ -1,0 +1,17 @@
+﻿void main
+(
+	float2 aPosition			: POSITION,
+	half2  aTexcoord			: TEXCOORD,
+	half4  aColor				: COLOR,
+
+	out float4	vPosition		: POSITION,
+	out half2	vTexCoord		: TEXCOORD0,
+	out half4	vColor			: COLOR
+)
+{
+	vPosition = float4(aPosition, 1.f, 1.f);
+
+	// pass thru color and texture coordinate
+	vColor = aColor;
+	vTexCoord = aTexcoord;
+}

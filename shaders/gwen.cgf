@@ -1,0 +1,12 @@
+﻿half4 main
+(
+	half2 vTexcoord : TEXCOORD0,
+	half4 vColor : COLOR,
+	uniform sampler2D aTexture : TEXUNIT0
+)
+{
+    // sample particle texture and apply to the color
+    half4 color = (tex2D(aTexture, vTexcoord.xy) * vColor);
+    return color;
+}
+

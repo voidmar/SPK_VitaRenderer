@@ -1,0 +1,26 @@
+﻿/* SCE CONFIDENTIAL
+PlayStation(R)Vita Programmer Tool Runtime Library Release 01.500.151 <-- Not exactly
+* Copyright (C) 2009 Sony Computer Entertainment Inc. 
+* All Rights Reserved.
+*/
+
+void main
+(
+	float4	aPosition	: POSITION,	
+	half4	aColor		: COLOR,
+	half2	aTexcoord	: TEXCOORD0,
+	
+	uniform float4x4 modelViewProj,
+
+	out float4	vPosition		: POSITION,
+	out half2	vTexCoord		: TEXCOORD0,
+	out half4	vColor			: TEXCOORD1
+)
+{
+	// apply model view projection matrix
+	vPosition = mul(modelViewProj, aPosition);
+	
+	// pass thru color and texture coordinate
+	vColor = aColor;
+	vTexCoord = aTexcoord;
+}
